@@ -11,6 +11,7 @@
 <body>
 
 	<div class="group">
+	  <div class="right-align">총 ${todoListVO.todoList.size()}건의 게시글이 등록되었습니다.</div>
       <table class="table">
         <thead>
           <tr>
