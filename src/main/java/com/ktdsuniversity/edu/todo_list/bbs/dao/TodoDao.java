@@ -7,6 +7,8 @@ import com.ktdsuniversity.edu.todo_list.bbs.vo.WriteTodoVO;
 
 public interface TodoDao {
 
+	public String NAMESPACE = "com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao";
+	
 	public List<TodoVO> selectAllTodo();
 	
 	public int insertNewTodo(WriteTodoVO writeTodoVO);

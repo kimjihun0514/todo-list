@@ -6,10 +6,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.ktdsuniversity.edu.todo_list.bbs.service.TodoService;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.TodoListVO;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.WriteTodoVO;
+import com.ktdsuniversity.edu.todo_list.common.utils.RequestUtil;
+import com.ktdsuniversity.edu.todo_list.member.vo.MemberVO;
 
 @Controller
 public class TodoController {
@@ -30,7 +33,15 @@ public class TodoController {
 	}
 	
 	@PostMapping("/todo/write")
-	public String doCreateTodo(WriteTodoVO writeTodoVO, Model model) {
+	public String doCreateTodo(WriteTodoVO writeTodoVO
+			                 , Model model
+			                 , @SessionAttribute(value = "_LOGIN_USER_", required = false) MemberVO loginMemberVO) {
+		
+		writeTodoVO.setIp(RequestUtil.getIp());
+		if (loginMemberVO == null) {
+			return "redirect:/member/login";
+		}
+		
 		boolean isCreate = this.todoService.creatNewTodo(writeTodoVO);
 		if (isCreate) {
 			return "redirect:/todo/list";

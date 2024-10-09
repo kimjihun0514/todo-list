@@ -11,6 +11,7 @@
 <body>
 
 	<div class="group">
+	  <jsp:include page="../todo/todomenu.jsp"></jsp:include>
 	  <div class="right-align">총 ${todoListVO.todoList.size()}건의 게시글이 등록되었습니다.</div>
       <table class="table">
         <thead>
@@ -40,14 +41,20 @@
 						    <td>${todo.ctt}</td>
 				            <td>${todo.deadline}</td>
 				            <c:choose>
-				            		<c:when test="${todo.isComplete == 0}">
-				            			<td><a href="/todo/complete${todo.id}">완료</a></td>
+				            		<c:when test="${todo.isComplete == 0 && not empty sessionScope._LOGIN_USER_}">
+				            			<td>
+				            				<a href="/todo/complete${todo.id}">완료</a>
+				            			</td>
 				            		</c:when>
 				            		<c:otherwise>
 				            			<td></td>
 				            		</c:otherwise>
 				            </c:choose>
-				            <td><a href="/todo/delete${todo.id}">삭제</a></td>
+				            <td>
+				            	<c:if test="${not empty sessionScope._LOGIN_USER_}">
+				            		<a href="/todo/delete${todo.id}">삭제</a>
+				            	</c:if>
+				            </td>
 		          		</tr>
         			</c:forEach>
         		</c:when>
@@ -59,12 +66,11 @@
         	</c:choose>
         </tbody>
       </table>
-
-      <div class="right-align">
-        <a href="/todo/write">새 아이템 추가</a>
-      </div>
-      
+	  	<c:if test="${not empty sessionScope._LOGIN_USER_}">
+			<div class="right-align">
+		        <a href="/todo/write">새 아이템 추가</a>
+		    </div>	  	
+	  	</c:if>
     </div>
-    
 </body>
 </html>

@@ -22,22 +22,22 @@ public class TodoDaoImpl extends SqlSessionDaoSupport implements TodoDao{
 	
 	@Override
 	public int insertNewTodo(WriteTodoVO writeTodoVO) {
-		return this.getSqlSession().insert("com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao.insertNewTodo", writeTodoVO);
+		return this.getSqlSession().insert(NAMESPACE + ".insertNewTodo", writeTodoVO);
 	}
 
 	@Override
 	public int updateTodo(int id) {
-		return this.getSqlSession().update("com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao.updateTodo", id);
+		return this.getSqlSession().update(NAMESPACE + ".updateTodo", id);
 	}
 
 	@Override
 	public int deleteTodo(int id) {
-		return this.getSqlSession().delete("com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao.deleteTodo", id);
+		return this.getSqlSession().delete(NAMESPACE + ".deleteTodo", id);
 	}
 
 	@Override
 	public List<TodoVO> selectAllTodo() {
-		return this.getSqlSession().selectList("com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao.selectAllTodo");
+		return this.getSqlSession().selectList(NAMESPACE + ".selectAllTodo");
 	}
 	
 }

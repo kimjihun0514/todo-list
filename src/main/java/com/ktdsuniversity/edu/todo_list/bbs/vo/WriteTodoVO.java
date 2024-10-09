@@ -5,6 +5,14 @@ public class WriteTodoVO {
 	private String ctt;
 	private String deadline;
 	
+	private String ip;
+	
+	public String getIp() {
+		return ip;
+	}
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 	public String getCtt() {
 		return ctt;
 	}
