@@ -11,6 +11,7 @@
 	
     <form class="div-group" method="post">
       <h1>새 아이템 추가</h1>
+      <jsp:include page="../todo/todomenu.jsp"></jsp:include>
       <div class="grid">
         <label for="ctt">제목</label>
         <input

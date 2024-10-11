@@ -3,13 +3,14 @@ package com.ktdsuniversity.edu.todo_list.bbs.dao;
 import java.util.List;
 
 import com.ktdsuniversity.edu.todo_list.bbs.vo.TodoVO;
+import com.ktdsuniversity.edu.todo_list.bbs.vo.UpdateAndDeleteTodoVO;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.WriteTodoVO;
 
 public interface TodoDao {
 
 	public String NAMESPACE = "com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao";
 	
-	public List<TodoVO> selectAllTodo();
+	public List<TodoVO> selectAllTodo(String email);
 	
 	public int insertNewTodo(WriteTodoVO writeTodoVO);
 	
@@ -18,13 +19,13 @@ public interface TodoDao {
 	 * @param id 게시글 ID
 	 * @return
 	 */
-	public int updateTodo(int id);
+	public int updateTodo(UpdateAndDeleteTodoVO updateAndDeleteTodoVO);
 	
 	/**
 	 * 삭제버튼을 클릭하면 파라미터로 받아온 id의 Todo가 삭제
 	 * @param id 게시글 ID
 	 * @return
 	 */
-	public int deleteTodo(int id);
+	public int deleteTodo(UpdateAndDeleteTodoVO updateAndDeleteTodoVO);
 	
 }

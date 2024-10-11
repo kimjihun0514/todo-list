@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.TodoVO;
+import com.ktdsuniversity.edu.todo_list.bbs.vo.UpdateAndDeleteTodoVO;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.WriteTodoVO;
 
 @Repository
@@ -26,18 +27,18 @@ public class TodoDaoImpl extends SqlSessionDaoSupport implements TodoDao{
 	}
 
 	@Override
-	public int updateTodo(int id) {
-		return this.getSqlSession().update(NAMESPACE + ".updateTodo", id);
+	public int updateTodo(UpdateAndDeleteTodoVO updateAndDeleteTodoVO) {
+		return this.getSqlSession().update(NAMESPACE + ".updateTodo", updateAndDeleteTodoVO);
 	}
 
 	@Override
-	public int deleteTodo(int id) {
-		return this.getSqlSession().delete(NAMESPACE + ".deleteTodo", id);
+	public int deleteTodo(UpdateAndDeleteTodoVO updateAndDeleteTodoVO) {
+		return this.getSqlSession().delete(NAMESPACE + ".deleteTodo", updateAndDeleteTodoVO);
 	}
 
 	@Override
-	public List<TodoVO> selectAllTodo() {
-		return this.getSqlSession().selectList(NAMESPACE + ".selectAllTodo");
+	public List<TodoVO> selectAllTodo(String email) {
+		return this.getSqlSession().selectList(NAMESPACE + ".selectAllTodo", email);
 	}
 	
 }

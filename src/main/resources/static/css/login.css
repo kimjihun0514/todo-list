@@ -56,7 +56,7 @@ input[type=submit] {
   color: #a00;
 }
 
-.left-align > a:checked, a:hover, a:visited, a:link {
+.right-align > a:checked, a:hover, a:visited, a:link {
 	width: 20%;
 	text-align: center;
 	background-color: #000;

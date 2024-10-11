@@ -121,4 +121,18 @@ public class MemberController {
 		return "member/" + result + "delete";
 	}
 	
+	@GetMapping("/mypage/tourist")
+	public String view() {
+		return "error/Mypage_Tourist_MyTour";
+	}
+	
+	@GetMapping("/mypage/guide")
+	public String view2() {
+		return "error/Mypage_Guide_MyTour";
+	}
+	
+	@GetMapping("/mypage/review")
+	public String view3() {
+		return "error/Mypage_Tourist_MyReview";
+	}
 }

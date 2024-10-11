@@ -4,9 +4,16 @@ public class WriteTodoVO {
 
 	private String ctt;
 	private String deadline;
+	private String email;
 	
 	private String ip;
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getIp() {
 		return ip;
 	}

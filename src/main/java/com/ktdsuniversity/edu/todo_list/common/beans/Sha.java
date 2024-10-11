@@ -4,7 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class Sha {
+	
+	public static final Logger logger = LoggerFactory.getLogger(Sha.class);
+	
 	/**
 	 * SHA-256 암호화 함
 	 * @param source 원본
@@ -44,7 +50,7 @@ public class Sha {
 			
 			result = sb.toString();
 		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage(), e);
 		}
 		
 		return result;

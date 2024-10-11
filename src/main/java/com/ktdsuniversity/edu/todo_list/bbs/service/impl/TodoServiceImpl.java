@@ -9,6 +9,7 @@ import com.ktdsuniversity.edu.todo_list.bbs.dao.TodoDao;
 import com.ktdsuniversity.edu.todo_list.bbs.service.TodoService;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.TodoListVO;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.TodoVO;
+import com.ktdsuniversity.edu.todo_list.bbs.vo.UpdateAndDeleteTodoVO;
 import com.ktdsuniversity.edu.todo_list.bbs.vo.WriteTodoVO;
 
 @Service
@@ -18,8 +19,8 @@ public class TodoServiceImpl implements TodoService {
 	private TodoDao todoDao;
 	
 	@Override
-	public TodoListVO getAllTodo() {
-		List<TodoVO> todoList = this.todoDao.selectAllTodo();
+	public TodoListVO getAllTodo(String email) {
+		List<TodoVO> todoList = this.todoDao.selectAllTodo(email);
 		
 		TodoListVO todoListVO = new TodoListVO();
 		todoListVO.setTodoList(todoList);
@@ -29,19 +30,20 @@ public class TodoServiceImpl implements TodoService {
 	
 	@Override
 	public boolean creatNewTodo(WriteTodoVO writeTodoVO) {
+		
 		int createCount = this.todoDao.insertNewTodo(writeTodoVO);
 		return createCount > 0;
 	}
 
 	@Override
-	public boolean changeIsComplete(int id) {
-		int updateCount = this.todoDao.updateTodo(id);
+	public boolean changeIsComplete(UpdateAndDeleteTodoVO updateAndDeleteTodoVO) {
+		int updateCount = this.todoDao.updateTodo(updateAndDeleteTodoVO);
 		return updateCount > 0;
 	}
 
 	@Override
-	public boolean deleteTodo(int id) {
-		int deleteCount = this.todoDao.deleteTodo(id);
+	public boolean deleteTodo(UpdateAndDeleteTodoVO updateAndDeleteTodoVO) {
+		int deleteCount = this.todoDao.deleteTodo(updateAndDeleteTodoVO);
 		return deleteCount > 0;
 	}
 

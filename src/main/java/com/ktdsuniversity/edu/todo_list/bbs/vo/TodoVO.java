@@ -1,11 +1,16 @@
 package com.ktdsuniversity.edu.todo_list.bbs.vo;
 
+import com.ktdsuniversity.edu.todo_list.member.vo.MemberVO;
+
 public class TodoVO {
 
 	private int id;
 	private int isComplete;
 	private String ctt;
 	private String deadline;
+	private String email;
+	
+	private MemberVO memberVO;
 	
 	public int getId() {
 		return id;
@@ -30,6 +35,18 @@ public class TodoVO {
 	}
 	public void setDeadline(String deadline) {
 		this.deadline = deadline;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 	
 	
